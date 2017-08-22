@@ -1,0 +1,41 @@
+html
+head
+	title Email activation
+	meta(http-equiv='refresh', content= redirectTimeInSeconds + ';url=' + link)
+	style(type='text/css').
+		html {
+			background: #f4f7f6;
+		}
+		main {
+		    width: 700px;
+		    margin: 50px auto;
+		    text-align: center;
+		    background: #effffc;
+		    border-radius: 5px;
+		    box-sizing: border-box;
+		    padding: 15px;
+		    border: 1px solid #42ab9e;
+		}
+		main.error {
+			border-color: #ab4242;
+			background-color: #ffefef;
+		}
+
+		a {
+		    color: green;
+			font-style: italic;
+		}
+
+		main.error > a {
+			color: maroon;
+		}
+		
+body
+	main(class= isError ? 'error' : '')
+		if isError
+			h3 Sorry! There was an error, try later.
+		else
+			h3 Great! Email was successfully submitted.
+		h4!= 'System will redirect automatically after ' + redirectTimeInSeconds + ' seconds.'
+		h4 If you want to redirect immediately follow the link to continue sign in proccess:
+		a(href!= link) Redirect me immediately

@@ -1,0 +1,13 @@
+.header { 
+    height: 45px;
+    padding: 5px;
+    border-bottom: 1px solid #e6eaea;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 30px;
+}
+
+.header > i {
+	margin-right: 15px;
+}
