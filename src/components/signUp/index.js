@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Validation from 'react-validation';
-import '../signIn/signIn.css';
 import '../../configs/validationRules';
 
 
@@ -22,8 +22,7 @@ export default class SignUp extends Component {
 	}
 
 	render() {
-		let { error } = this.props.data;
-		const errorElement = error && error.message ? <div className="error-block"> {error.message} </div> : null;
+		// let returnToSignIn = this.props.data.isSignUpDone ? <Redirect from='/auth/signUp' to='/auth/signIn'/> : null;
 		return (
 			<div className="auth-wrapper">
 				<Validation.components.Form onSubmit={this.onFormSubmit} className="auth" >
@@ -77,12 +76,12 @@ export default class SignUp extends Component {
 			      			/>
 			      			<i className="fa fa-lock"></i>
 			      		</div>
-
-			      		{errorElement}
 			      	</div>	
 			      	<div className="form-footer"> 
 			      		<Validation.components.Button className="auth-button">Sign up</Validation.components.Button>
-						<i className="fa fa-undo auth-icon" aria-hidden="true" title="Sign Up"></i>
+						<Link to="/auth/signIn">
+							<i className="fa fa-undo auth-icon" aria-hidden="true" title="Sign In"></i>
+						</Link>	
 			      	</div>
 		      	</Validation.components.Form>
 		  	</div>

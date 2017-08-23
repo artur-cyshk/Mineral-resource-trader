@@ -1,4 +1,4 @@
-import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE } from '../constants/actionTypes';
+import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE, ADD_NOTIFICATION } from '../constants/actionTypes';
 import { callApi } from '../services/http';
 
 
@@ -9,22 +9,19 @@ const auth = (type, user) => {
       type: AUTH_REQUEST
     });
     callApi(type, {method: 'post', body: user})
-	    .then((response) => response.json())
-	    .then((response) => {
-	    	dispatch({
-	          type: response.ok ? AUTH_SUCCESS : AUTH_FAILURE,
-	          payload: response
-	        });
+	    .then(response => {
+	    	return response.json().then( json => ({ ok: response.ok, json }) )
+	    }) 
+	    .then(({ok, json}) => {
+	    	  dispatch({ type: ok ? AUTH_SUCCESS : AUTH_FAILURE, payload: json });
+	        dispatch({ type: ADD_NOTIFICATION, payload: { message: json.message, ok: ok } });
 	    })
-  		.catch((response) => {
-  			dispatch({
-	          type: AUTH_FAILURE,
-	          payload: 'There was an error while parsing response'
-	        });
+  		.catch(response => {
+  		    dispatch({ type: AUTH_FAILURE, payload: 'There was an error while parsing response' });
+	        dispatch({ type: ADD_NOTIFICATION, payload: { message: 'There was an error while parsing response', ok: false } });
   		});
   };
 };
-
 
 export const signIn = (user) => auth('signIn', user);
 export const signUp = (user) => auth('signUp', user);

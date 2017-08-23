@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './signIn.css';
+import { Link } from 'react-router-dom';
 
 
 export default class SignIn extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: '', password: ''};
+		this.state = { username: '213', password: '12'};
 	}
 
 	onValueChange = (ev) => {
@@ -21,7 +21,6 @@ export default class SignIn extends Component {
 
 	render() {
 		let { error } = this.props.data;
-		const errorElement = error && error.message ? <div className="error-block"> {error.message} </div> : null;
 		return (
 			<div className="auth-wrapper">
 		      	<form onSubmit={this.onFormSubmit} className="auth">
@@ -35,11 +34,10 @@ export default class SignIn extends Component {
 			      			<input type="password" onChange={this.onValueChange} value={this.state.password} name="password" placeholder="Password" />
 			      			<i className="fa fa-lock" aria-hidden="true"></i>
 			      		</div>
-			      		{errorElement}
 			      	</div>	
 			      	<div className="form-footer"> 
-						<button className="auth-button"> sign in </button>
-						<i className="fa fa-user-plus auth-icon" aria-hidden="true" title="Sign up"></i>
+						<button className="auth-button" disabled={!this.state.password || !this.state.username}> sign in </button>
+						<Link to="/auth/signUp"><i className="fa fa-user-plus auth-icon" aria-hidden="true" title="Sign up"></i></Link>
 			      	</div>
 		      	</form>
 		  	</div>

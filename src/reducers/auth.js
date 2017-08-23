@@ -1,27 +1,25 @@
 import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE } from '../constants/actionTypes';
 
 const initialState = {
-  user: {},
-  isAuthorized: false,
   fetching: false,
-  error: {}
+  isSignUpDone: false
 };
 
 export default function auth(state = initialState, action) {
 	switch(action.type) {
 		case AUTH_REQUEST: 
 			return {
-				...state, fetching: true 
+				fetching: true, isSignUpDone: false 
 			};
 		case AUTH_SUCCESS: 
 			return {
-				...state, fetching: false, isAuthorized: true, user: action.payload, error: {}
+				fetching: false, isSignUpDone: true 
 			};
 		case AUTH_FAILURE: 
 			return {
-				...state, fetching: false, isAuthorized: false, error: action.payload, user: {}
-			};	
+				fetching: false, isSignUpDone: false 
+			};
 		default:
 			return state;
-	};
+	}
 };

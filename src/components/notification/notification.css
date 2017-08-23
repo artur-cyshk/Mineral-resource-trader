@@ -1,0 +1,37 @@
+.notification {
+    width: 100%;
+    min-height: 70px;
+    max-height: 200px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border-right: 2px;
+    margin-bottom: 15px;
+    position: relative;
+    margin-left: 15px;
+    padding: 10px;
+    border-left: 5px solid transparent;
+}
+
+.notification > i {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	cursor: pointer;
+	transition: 0.1s linear all;
+}
+
+.notification > i:hover {
+	color: #cecece;
+}
+
+.notification > i:active {
+	color: #000000;
+}
+
+.notification.success {
+	border-color: #69b9b0;
+}
+
+.notification.failed {
+	border-color: #903939;
+}

@@ -1,11 +1,17 @@
 .header { 
     height: 45px;
     padding: 5px;
+    width: calc(70% - 20px);
+    background: rgba(0, 137, 123, 0.58);
     border-bottom: 1px solid #e6eaea;
     display: flex;
+    border-radius: 5px;
     flex-direction: row;
     align-items: center;
     font-size: 30px;
+    color: #f5f3ec;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
 .header > i {

@@ -1,18 +1,18 @@
 import PieChart from './pieChart';
 import Portfolio from './portfolio';
 import Profit from './profit';
-import RecentActivities from './recentActivities';
 import Header from './header';
 import SignIn from './signIn';
 import SignUp from './signUp';
+import Notification from './notification';
 
 
 export {
 	PieChart,
 	Portfolio,
 	Profit,
-	RecentActivities,
 	Header,
 	SignIn,
-	SignUp
+	SignUp,
+	Notification
 };

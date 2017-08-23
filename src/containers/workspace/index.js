@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Operations, Archive } from '../../containers';
-import { RecentActivities } from '../../components';
+import { Operations, Archive, RecentActivities } from '../../containers';
 import {
   BrowserRouter as Router,
   Route,

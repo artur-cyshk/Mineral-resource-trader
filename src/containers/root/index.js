@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from '../../reducers';
 import { Header } from '../../components';
-import { Workspace, Auth, Admin } from '../../containers';
+import { Workspace, Auth, Admin, Notifications } from '../../containers';
 import './root.css';
 import {
   BrowserRouter as Router,
@@ -29,6 +29,7 @@ export default class Root extends Component {
                     <Route path="/" component={Workspace} />
                   </Switch>
               </Router>
+              <Notifications/>
             </div>
         	</div>
     	</Provider>

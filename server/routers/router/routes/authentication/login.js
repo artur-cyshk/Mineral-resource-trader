@@ -13,13 +13,14 @@ module.exports = function (req, res, next) {
 	            };
 	            var token = jwt.encode(payload, cfg.jwtSecret);
 	            res.json({
+	            	message: 'You are welcome!',
 	                token: token
 	            });
 	        }else{
-	        	return next({status : 401, message : "Check your username or password"});
+	        	return next({status: 401, message: "Check your username or password"});
 	        }
         })
     } else {
-        return next({status : 401, message : "Check your username or password"});
+        return next({status: 401, message: "Check your username or password"});
     }
 };

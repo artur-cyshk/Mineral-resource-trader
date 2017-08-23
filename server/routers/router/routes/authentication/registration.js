@@ -14,7 +14,7 @@ const quering = function(user, res, next) {
                     message: `${type} already exists`
                 });
             }else {
-                next(true);
+                next({ message: `There was an error while registration` });
             }
             return;
         }
@@ -27,9 +27,13 @@ const quering = function(user, res, next) {
             },
             (error, info) => {
                 if (error) {
-                    return next(true);
+                    return next({
+                        message: "There was an error while sending activation email, try later"
+                    });
                 }
-                res.status(200).end();
+                res.status(200).json({
+                    message: 'Message for email activation was successfully sended.'
+                });
             });
     })
 };

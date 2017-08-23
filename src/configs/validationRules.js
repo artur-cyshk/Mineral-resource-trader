@@ -31,16 +31,5 @@ Object.assign(Validation.rules, {
             return password.value === passwordConfirm.value;
         },
         hint: () => <span className="form-error is-visible">Passwords should be equal.</span>
-    },
-    // Define API rule to show hint after API error response 
-    api: {
-        // We don't need the rule here because we will call the 'showError' method by hand on API error 
-        hint: value => (
-            <button
-                className="form-error is-visible"
-            >
-                API Error on "{value}" value. Focus to hide.
-            </button>
-        )
     }
 });
