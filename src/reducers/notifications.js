@@ -1,13 +1,12 @@
 import { ADD_NOTIFICATION, REMOVE_NOTIFICATION } from '../constants/actionTypes';
+import { generateGuid } from '../services/helper';
 
-const initialState = [{type: 'success', message: 'bdfdasf dasfad0 fdoasf adfok adsfojda fodafjadof ee'}, {type: 'failed', message: 'bee2'}, {type: 'error', message: 'bee'}, {type: 'error', message: 'bee2'}, {type: 'error', message: 'bee'}, {type: 'error', message: 'bee2'}];
-
-export default function notifications(state = initialState, action) {
+export default function notifications(state = [], action) {
 	switch(action.type) {
 		case ADD_NOTIFICATION: 
-			return [action.payload, ...state];
+			return [...state, { guid: generateGuid(), ...action.payload }];
 		case REMOVE_NOTIFICATION: 
-			return state.filter((notification, i) => i !== action.payload);
+			return state.filter((item, i) => item.guid !== action.payload)
 		default:
 			return state;
 	}

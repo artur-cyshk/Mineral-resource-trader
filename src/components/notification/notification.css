@@ -2,12 +2,11 @@
     width: 100%;
     min-height: 70px;
     max-height: 200px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.76);
     color: white;
     border-right: 2px;
     margin-bottom: 15px;
     position: relative;
-    margin-left: 15px;
     padding: 10px;
     border-left: 5px solid transparent;
 }

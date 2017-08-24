@@ -1,7 +1,24 @@
 .notifications {
 	position: fixed;
-    bottom: 0;
     left: 0;
-    width: 250px;
+    bottom: 0;
+    width: 300px;
+    padding: 0 15px;
     height: auto;
+}
+
+.notification-enter {
+	transform: translate(-100%);
+}
+.notification-enter.notification-enter-active {
+	transform: translate(0);
+	transition: all 500ms ease-in;
+}
+.notification-leave {
+	transform: translate(0);
+	opacity: 1;
+}
+.notification-leave.notification-leave-active {
+	transform: translate(-100%);
+	transition: all 500ms ease-in;
 }

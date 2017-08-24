@@ -14,7 +14,7 @@ const auth = (type, user) => {
 	    }) 
 	    .then(({ok, json}) => {
 	    	  dispatch({ type: ok ? AUTH_SUCCESS : AUTH_FAILURE, payload: json });
-	        dispatch({ type: ADD_NOTIFICATION, payload: { message: json.message, ok: ok } });
+	        dispatch({ type: ADD_NOTIFICATION, payload: { message: json.message, ok: ok, autoclosing: true } });
 	    })
   		.catch(response => {
   		    dispatch({ type: AUTH_FAILURE, payload: 'There was an error while parsing response' });

@@ -20,7 +20,6 @@ export default class SignIn extends Component {
 	}
 
 	render() {
-		let { error } = this.props.data;
 		return (
 			<div className="auth-wrapper">
 		      	<form onSubmit={this.onFormSubmit} className="auth">
