@@ -15,6 +15,12 @@
     text-transform: uppercase;
 }
 
+.header a {
+    color: #f5f3ec;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .header > i {
 	margin-right: 15px;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import './header.css';
 
 
@@ -8,9 +9,9 @@ class Header extends Component {
     return (
     	<div className="header">
 	    	<i className={`fa fa-shopping-basket ${this.props.isLoading ? 'is_loading' : ''}`} ></i>
-	      	<div>
-	      		Online Market
-	      	</div>
+            <Router location='history'>
+                <NavLink to="/operations" title="Go to main page">Online Market</NavLink>
+            </Router>
       	</div>
     );
   }
