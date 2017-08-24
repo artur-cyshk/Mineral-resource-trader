@@ -1,14 +1,14 @@
 .header { 
     height: 45px;
     padding: 5px;
-    min-width: 340px;
-    width: calc(70% - 20px);
+    width: 100%;
     background: rgba(0, 137, 123, 0.58);
     border-bottom: 1px solid #e6eaea;
     display: flex;
     border-radius: 5px;
     flex-direction: row;
     align-items: center;
+    position: relative;
     font-size: 30px;
     color: #f5f3ec;
     font-weight: 400;
@@ -17,4 +17,18 @@
 
 .header > i {
 	margin-right: 15px;
+}
+
+.header > i.is_loading {
+    color: #b6fff1;
+    animation: rotate 1.5s infinite linear;
+}
+
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to { 
+        -webkit-transform: rotate(360deg);
+    }
 }

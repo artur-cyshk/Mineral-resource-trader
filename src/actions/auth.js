@@ -1,15 +1,15 @@
-import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE, ADD_NOTIFICATION } from '../constants/actionTypes';
+import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE, ADD_NOTIFICATION, LOADING_START, LOADING_END } from '../constants/actionTypes';
 import { callApi } from '../services/http';
 
 
 const auth = (type, user) => {
 
   return (dispatch) => {
-    dispatch({
-      type: AUTH_REQUEST
-    });
+    dispatch({ type: AUTH_REQUEST });
+    dispatch({ type: LOADING_START });
     callApi(type, {method: 'post', body: user})
 	    .then(response => {
+        dispatch({ type: LOADING_END });
 	    	return response.json().then( json => ({ ok: response.ok, json }) )
 	    }) 
 	    .then(({ok, json}) => {

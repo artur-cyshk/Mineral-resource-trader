@@ -1,3 +1,3 @@
 export default {
-	autoRemovingNotificationDelay: 15000
+	autoRemovingNotificationDelay: 5000
 }

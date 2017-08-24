@@ -6,6 +6,7 @@ import Workspace from './workspace';
 import Auth from './auth';
 import Notifications from './notifications';
 import RecentActivities from './recentActivities';
+import Header from './header';
 
 
 export {
@@ -16,5 +17,6 @@ export {
 	Workspace,
 	Auth,
 	Notifications,
-	RecentActivities
+	RecentActivities,
+	Header
 };

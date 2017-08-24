@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from '../../reducers';
-import { Header } from '../../components';
-import { Workspace, Auth, Admin, Notifications } from '../../containers';
+import { Workspace, Auth, Admin, Notifications, Header } from '../../containers';
 import './root.css';
 import {
   BrowserRouter as Router,

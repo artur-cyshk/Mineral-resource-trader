@@ -22,7 +22,6 @@ export default class SignUp extends Component {
 	}
 
 	render() {
-		// let returnToSignIn = this.props.data.isSignUpDone ? <Redirect from='/auth/signUp' to='/auth/signIn'/> : null;
 		return (
 			<div className="auth-wrapper">
 				<Validation.components.Form onSubmit={this.onFormSubmit} className="auth" >
