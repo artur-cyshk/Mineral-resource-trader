@@ -1,37 +1,49 @@
 import React, { Component } from 'react';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import reducer from '../../reducers';
+import { connect } from 'react-redux';
 import { Workspace, Auth, Admin, Notifications, Header } from '../../containers';
+import { getCurrentUserDispatcher } from '../../dispatchers';
 import './root.css';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
-import thunk from 'redux-thunk';
-
-const createStoreWithMiddleware = compose(applyMiddleware(thunk))(createStore)(reducer);
 
 
-export default class Root extends Component {
+class Root extends Component {
+
+  componentWillMount() {
+    this.props.getCurrentUser();  
+  }
+  
   render() {
     return (
-      	<Provider store={createStoreWithMiddleware}>
+        <Router location='history'>
       		<div>
       			<Header/>
             <div className="workspace-wrapper">
-              <Router location='history'>
-                  <Switch>
-                    <Route path="/auth" component={Auth} />
-                    <Route path="/admin" component={Admin} />
-                    <Route path="/" component={Workspace} />
-                  </Switch>
-              </Router>
+              <Switch>
+                <Route path="/auth" component={Auth} />
+                <Route path="/admin" component={Admin} />
+                <Route path="/workspace" component={Workspace} />
+                <Redirect from='/' to='/workspace'/>
+              </Switch>
               <Notifications/>
             </div>
         	</div>
-    	</Provider>
+        </Router>
     );
   }
 };
+
+const mapStateToProps = (state) => ({ currentUser: state.auth.currentUser });
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCurrentUser: () => dispatch(getCurrentUserDispatcher())
+  }
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);

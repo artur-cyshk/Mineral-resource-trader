@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Operations, Archive, RecentActivities } from '../../containers';
 import {
-  BrowserRouter as Router,
   Route,
   NavLink,
   Redirect,
@@ -15,21 +14,19 @@ export default class Workspace extends Component {
     return (
       <div className="workspace">
         <div>
-    			<Router location='history'>
             <div className="workspace-inner">
               <nav>
-                <NavLink to="/operations" activeClassName="active">operations</NavLink>
-                <NavLink to="/archive" activeClassName="active">archive</NavLink>
+                <NavLink to="/workspace/operations" activeClassName="active">operations</NavLink>
+                <NavLink to="/workspace/archive" activeClassName="active">archive</NavLink>
               </nav>
               <main>
                 <Switch>
-                  <Route path="/operations" component={Operations} />
-                  <Route path="/archive" component={Archive} />
-                  <Redirect from='/' to="/operations" />
+                  <Route path="/workspace/operations" component={Operations} />
+                  <Route path="/workspace/archive" component={Archive} />
+                  <Redirect from='/workspace' to="/workspace/operations" />
                 </Switch>
               </main>
             </div>
-    	    </Router>
          </div> 
         <RecentActivities/>
       </div>

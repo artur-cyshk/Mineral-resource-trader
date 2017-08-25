@@ -6,7 +6,7 @@ export const callApi = (route, config = {}) => {
 	config.headers = new Headers();
 	config.headers.append('Content-Type' ,'application/json;charset=UTF-8');
 	if (token) {
-		config.headers['Authorization'] = `JWT ${token}`;
+		config.headers.append('Authorization' ,`JWT ${token}`);
 	}
 	if(config.body) {
 		config.body = JSON.stringify(config.body);

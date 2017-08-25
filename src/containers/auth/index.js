@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as authActions from '../../actions/auth';
-
+import { signInDispatcher, signUpDispatcher } from '../../dispatchers';
 import { SignIn, SignUp } from '../../components';
 import {
-  BrowserRouter as Router,
   Route,
   Redirect,
   Switch
@@ -16,23 +13,25 @@ import './auth.css';
 class Auth extends Component {
 
 	render() {
-        const { signIn, signUp } = this.props.authActions;
         return (
-        	<Router location='history'>
-                    <Switch>
-                        <Route path="/auth/signIn" render={ () => <SignIn onSubmit={signIn} data={this.props.data}/> } />
-                        <Route path="/auth/signUp" render={ () => <SignUp onSubmit={signUp} data={this.props.data}/> } />
-                        <Redirect from='/auth' to="/auth/signIn" />
-                    </Switch>
-                </Router>
+          <Switch>
+              <Route path="/auth/signIn" render={ () => <SignIn onSubmit={this.props.signIn} data={this.props.data}/> } />
+              <Route path="/auth/signUp" render={ () => <SignUp onSubmit={this.props.signUp} data={this.props.data}/> } />
+              <Redirect from='/auth' to="/auth/signIn" />
+          </Switch>
         );
 	}
 };
 
+
+
 const mapStateToProps = (state) => ({ data: state.auth });
-const mapDispatchToProps = (dispatch) => ({
-  authActions: bindActionCreators(authActions, dispatch)
-});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (user) => dispatch(signUpDispatcher(user)),
+    signIn: (user) => dispatch(signInDispatcher(user)),
+  }
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

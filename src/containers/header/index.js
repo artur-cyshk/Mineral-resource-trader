@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { signOutDispatcher } from '../../dispatchers';
 import './header.css';
 
 
@@ -8,15 +9,29 @@ class Header extends Component {
   render() {
     return (
     	<div className="header">
-	    	<i className={`fa fa-shopping-basket ${this.props.isLoading ? 'is_loading' : ''}`} ></i>
-            <Router location='history'>
-                <NavLink to="/operations" title="Go to main page">Online Market</NavLink>
-            </Router>
+          <Link to="/workspace" title="Go to main page">
+            <i className={`fa fa-shopping-basket ${this.props.isLoading ? 'is_loading' : ''}`} ></i>
+            Online Market
+          </Link>
+          <div className="auth-link-wrapper">
+            <Link to="/auth/signIn" title="Sign in" hidden={this.props.currentUser.id}>
+              <i className="fa fa-sign-in"></i>
+            </Link>
+            <Link to="/auth/signUp" title="Sign up" hidden={this.props.currentUser.id}>
+              <i className="fa fa-user-plus"></i>
+            </Link>
+            <span hidden={!this.props.currentUser.id}>{ this.props.currentUser.name }</span> 
+            <Link to="/workspace" title="Sign out" onClick={this.props.signOut} hidden={!this.props.currentUser.id}>
+              <i className="fa fa-sign-out"></i>
+            </Link>
+          </div>
       	</div>
     );
   }
 };
 
-const mapStateToProps = (state) => ({ isLoading: state.loading.isLoading });
+const mapStateToProps = (state) => ({ isLoading: state.loading.isLoading, currentUser: state.auth.currentUser });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({ signOut: () => dispatch(signOutDispatcher()) });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

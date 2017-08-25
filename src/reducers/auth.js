@@ -1,23 +1,18 @@
-import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE } from '../constants/actionTypes';
+import { SET_CURRENT_USER, UNSET_CURRENT_USER } from '../constants/actionTypes';
 
 const initialState = {
-  fetching: false,
-  isSignUpDone: false
+	currentUser: {}
 };
 
-export default function auth(state = initialState, action) {
+export default (state = initialState, action) => {
 	switch(action.type) {
-		case AUTH_REQUEST: 
+		case SET_CURRENT_USER: 
 			return {
-				fetching: true, isSignUpDone: false 
+				currentUser: action.payload
 			};
-		case AUTH_SUCCESS: 
+		case UNSET_CURRENT_USER: 
 			return {
-				fetching: false, isSignUpDone: true 
-			};
-		case AUTH_FAILURE: 
-			return {
-				fetching: false, isSignUpDone: false 
+				currentUser: {}
 			};
 		default:
 			return state;
