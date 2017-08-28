@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import { Workspace, Auth, Admin, Notifications, Header } from '../../containers';
 import { getCurrentUserDispatcher } from '../../dispatchers';
 import './root.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from 'react-router-dom';
+import { Router } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import history from '../../configs/history';
 
 
 class Root extends Component {
@@ -21,7 +18,7 @@ class Root extends Component {
     let { isAdmin, id } = this.props.currentUser;
     let authorizedRedirect = isAdmin ? <Redirect to='/admin'/> : id ? <Redirect to='/workspace'/> : null;
     return (
-        <Router location='history'>
+        <Router history={history}>
       		<div>
       			<Header/>
             <div className="workspace-wrapper"> 

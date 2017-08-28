@@ -1,7 +1,9 @@
 import { authDispatcher } from './';
+import history from '../configs/history';
+
 
 const successDispatcher = (response, dispatch) => {
-	//todo redirect to sign in
+	history.push('/auth/signIn');
 }
 
 export default (userData) => {
