@@ -1,5 +1,5 @@
 import { callApi } from '../services/http';
-import { UNAUTHORIZED_STATUS } from '../constants/endpoints';
+import { UNAUTHORIZED_STATUS, BANNED_STATUS } from '../constants/endpoints';
 import { loadingDispatcher, notificationsDispatcher } from './';
 
 
@@ -10,11 +10,12 @@ export default (apiCallData, successDispatcher, errorDispatcher, { successNotifi
 		    .then(response => {
 		        loadingDispatcher(false, dispatch);
 		        let isUnauthorized = response.status === UNAUTHORIZED_STATUS;
+		        let isBanned = response.status === BANNED_STATUS;
 			    return response[isUnauthorized ? 'text' : 'json']().then( info => {
 			    	return {
 			    		ok: response.ok,
 			    		status: response.status,
-			    		json: isUnauthorized ? { message: info, isUnauthorized: isUnauthorized } : info 
+			    		json: isUnauthorized ? { message: info, isUnauthorized, isBanned } : { ...info, isBanned } 
 			    	}
 			    });
 			}) 

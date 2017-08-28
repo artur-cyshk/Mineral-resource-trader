@@ -3,14 +3,14 @@ import { fetchDispatcher } from './';
 import * as localStorageService from '../services/localStorage';
 
 const successDispatcher = (response, dispatch) => {
-	if(response.isUnauthorized) {
+	if(response.isUnauthorized || response.isBanned) {
 		localStorageService.removeItem('access_token');
 	}
 	dispatch(setCurrentUser(response));
 }
 
 const errorDispatcher = (response, dispatch) => {
-	if(response.isUnauthorized) {
+	if(response.isUnauthorized || response.isBanned) {
 		localStorageService.removeItem('access_token');
 	}
 	dispatch(unsetCurrentUser());
