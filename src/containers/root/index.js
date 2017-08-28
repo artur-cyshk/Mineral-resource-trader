@@ -18,16 +18,18 @@ class Root extends Component {
   }
   
   render() {
+    let { isAdmin, id } = this.props.currentUser;
+    let authorizedRedirect = isAdmin ? <Redirect to='/admin'/> : id ? <Redirect to='/workspace'/> : null;
     return (
         <Router location='history'>
       		<div>
       			<Header/>
-            <div className="workspace-wrapper">
+            <div className="workspace-wrapper"> 
+              { authorizedRedirect }
               <Switch>
-                <Route path="/auth" component={Auth} />
-                <Route path="/admin" component={Admin} />
-                <Route path="/workspace" component={Workspace} />
-                <Redirect from='/' to='/workspace'/>
+                { isAdmin ? <Route path="/admin" component={Admin} /> : <Route path="/workspace" component={Workspace} /> }
+                { (!isAdmin && id == null) && <Route path="/auth" component={Auth} /> }
+                <Redirect from='/' to={ isAdmin ? '/admin' : '/workspace' } />
               </Switch>
               <Notifications/>
             </div>
