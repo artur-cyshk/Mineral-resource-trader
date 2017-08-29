@@ -1,5 +1,5 @@
 import { callApi } from '../services/http';
-import { UNAUTHORIZED_STATUS, BANNED_STATUS } from '../constants/endpoints';
+import { UNAUTHORIZED_STATUS } from '../constants/statuses';
 import { loadingDispatcher, notificationsDispatcher } from './';
 
 
@@ -10,19 +10,19 @@ export default (apiCallData, successDispatcher, errorDispatcher, { successNotifi
 		    .then(response => {
 		        loadingDispatcher(false, dispatch);
 		        let isUnauthorized = response.status === UNAUTHORIZED_STATUS;
-		        let isBanned = response.status === BANNED_STATUS;
-			    return response[isUnauthorized ? 'text' : 'json']().then( info => {
+			    return response[isUnauthorized ? 'text' : 'json']().then( responseData => {
 			    	return {
 			    		ok: response.ok,
 			    		status: response.status,
-			    		json: isUnauthorized ? { message: info, isUnauthorized, isBanned } : { ...info, isBanned } 
+			    		isUnauthorized: isUnauthorized,
+			    		json: isUnauthorized ? { message: responseData } : responseData
 			    	}
 			    });
 			}) 
-		    .then(({ok, status, json}) => {
+		    .then(({ok, status, isUnauthorized, json}) => {
 		    	if (ok) {
-		    		successDispatcher({status, ...json}, dispatch);
-		    		if (successNotificationNeeded && status !== UNAUTHORIZED_STATUS) {
+		    		successDispatcher(json, dispatch);
+		    		if (successNotificationNeeded) {
 		    			notificationsDispatcher({ message: json.message, ok: true }, true)(dispatch);
 		    		} 
 		    	} else {
@@ -30,7 +30,7 @@ export default (apiCallData, successDispatcher, errorDispatcher, { successNotifi
 		    			notificationsDispatcher({ message: json.message, ok: false }, true)(dispatch);
 			    	} 
 			    	if (errorDispatcher) {
-			    		errorDispatcher({status, ...json}, dispatch);
+			    		errorDispatcher({status, isUnauthorized, ...json}, dispatch);
 			    	}
 		    	}
 		    })
@@ -41,6 +41,7 @@ export default (apiCallData, successDispatcher, errorDispatcher, { successNotifi
 	  		    if (errorNotificationNeeded) {
 	  		    	notificationsDispatcher({ message: 'There was an error while parsing response' }, true)(dispatch);
 	  		    }
+	  		    loadingDispatcher(false, dispatch);
 	  		});
 	}
 }

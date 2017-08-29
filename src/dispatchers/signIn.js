@@ -5,8 +5,8 @@ import * as localStorageService from '../services/localStorage';
 
 const successDispatcher = (response, dispatch) => {
 	if(response && response.token) {
-		dispatch(setCurrentUser(response.user));
 		localStorageService.setItem('access_token', response.token);
+		dispatch(setCurrentUser(response.user));
 	}
 }
 

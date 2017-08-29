@@ -6,3 +6,6 @@ export const LOADING_END = 'LOADING_END';
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const UNSET_CURRENT_USER = 'UNSET_CURRENT_USER';
+
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const CLEAR_USERS_LIST = 'CLEAR_USERS_LIST';

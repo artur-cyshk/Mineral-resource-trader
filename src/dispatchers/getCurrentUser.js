@@ -1,16 +1,15 @@
 import { setCurrentUser, unsetCurrentUser } from '../actions/auth';
 import { fetchDispatcher } from './';
 import * as localStorageService from '../services/localStorage';
+import { UNAUTHORIZED_STATUS, NO_PERMISSION_STATUS } from '../constants/statuses';
+
 
 const successDispatcher = (response, dispatch) => {
-	if(response.isUnauthorized || response.isBanned) {
-		localStorageService.removeItem('access_token');
-	}
 	dispatch(setCurrentUser(response));
 }
 
 const errorDispatcher = (response, dispatch) => {
-	if(response.isUnauthorized || response.isBanned) {
+	if([UNAUTHORIZED_STATUS, NO_PERMISSION_STATUS].includes(response.status)) {
 		localStorageService.removeItem('access_token');
 	}
 	dispatch(unsetCurrentUser());
@@ -32,5 +31,3 @@ export default () => {
 		}
 	)
 } 
-
-

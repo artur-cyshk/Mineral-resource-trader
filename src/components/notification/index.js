@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NOTIFICATION_CONFIG from '../../configs/notificationConfig.js'
+import { autoRemovingNotificationDelay } from '../../constants/common.js';
 import './notification.css';
 
 export default class Notification extends Component {
@@ -14,7 +14,7 @@ export default class Notification extends Component {
 			let guid = this.props.info.guid;
 			this.timeoutId = setTimeout(
 				() => this.props.onRemoveNotification(guid),
-				NOTIFICATION_CONFIG.autoRemovingNotificationDelay
+				autoRemovingNotificationDelay
 			);
 		}
 	}

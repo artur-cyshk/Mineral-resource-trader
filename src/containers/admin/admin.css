@@ -1,0 +1,52 @@
+.admin-wrapper > div {
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	max-height: 600px;
+	overflow-y: auto;
+	background: rgba(105, 185, 176, 0.07);
+	border: 1px solid #69b9b0;
+}
+
+.admin-wrapper {
+	display: flex;
+	flex: 1;
+	padding-top: 30px;
+	flex-direction: column;
+}
+
+.admin-wrapper > nav {
+	height: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-wrapper > nav > a{
+    display: flex;
+    width: 180px;
+    color: black;
+    background: rgba(105, 185, 176, 0.07);
+    font-size: 13px;
+    justify-content: center;
+    position: relative;
+    border-radius: 2px;
+    text-transform: uppercase;
+    transition: 0.1s linear all;
+    align-items: center;
+    border: 1px solid #69b9b0;
+    border-bottom: 0;
+    text-decoration: none;
+}
+
+.admin-wrapper > nav > a:after {
+	content: "";
+	position: absolute;
+	transition: 0.1s linear all;
+	top: -1px;
+	right: -1px;
+	width: 0;
+	height: 0;
+	border-top: 15px solid transparent;
+	border-left: 15px solid #69b9b0;
+	background: #fafafa;
+}

@@ -7,6 +7,7 @@ router.post('/registration', require('./routes/authentication/registration'));
 router.get('/activate/user/:id/email/:email', require('./routes/authentication/activation'));
 
 router.get('/user', auth.authenticate(), require('./routes/user/get'));
+router.get('/users', auth.authenticate(), require('./routes/users/get'));
 router.put('/user', auth.authenticate(), require('./routes/user/put'));
 
 module.exports = router;
