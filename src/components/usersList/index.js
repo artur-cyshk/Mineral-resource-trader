@@ -7,7 +7,7 @@ export default class UsersList extends Component {
   render() {
     return (
     	<ul className="users">
-			{ this.props.users.map((user, i) => <User key={i} info={user} />) }
+				{ this.props.users.map((user, i) => <User key={i} updateUser={this.props.updateUser} info={user} />) }
     	</ul>
       	
     );

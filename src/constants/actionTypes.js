@@ -9,3 +9,4 @@ export const UNSET_CURRENT_USER = 'UNSET_CURRENT_USER';
 
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const CLEAR_USERS_LIST = 'CLEAR_USERS_LIST';
+export const UPDATE_USER_BY_ID = 'UPDATE_USER_BY_ID';

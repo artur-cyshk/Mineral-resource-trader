@@ -1,7 +1,88 @@
 .user {
 	width: 400px;
 	margin: 10px;
-    background: black;
-    color: white;
-    height: 90px;
+  background: rgb(94, 140, 158);
+  position: relative;
+  color: #f5f3ec;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 3px;
+}
+
+.user.banned {
+	background-color: rgb(158, 94, 94);
+}
+
+.user.admin {
+	background-color: rgb(94, 158, 151);
+}
+
+.user.banned.admin {
+	background: linear-gradient(-90deg, rgb(158, 94, 94), rgb(94, 158, 151));
+}
+
+.user > div {
+	height: 100%;
+	line-height: 90px;
+	position: relative;
+}
+
+.title-block {
+	position: absolute;
+  bottom: 3px;
+  left: 6px;
+  color: #e2e2e2;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.user-name {
+	padding-left: 15px;
+	font-size: 30px;
+	font-weight: 200;
+	max-width: 290px;
+	overflow: hidden;
+	white-space: nowrap;
+	display: inline-block;
+	text-overflow: ellipsis;
+}
+
+.user-actions {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: flex-end;
+}
+
+.user-actions > button {
+	width: 100px;
+	height: 30px;
+	border: 0;
+	display: flex;
+	justify-content: space-between;
+	outline: none;
+	font-size: 15px;
+	cursor: pointer;
+  color: #f9f9f9;
+  background: rgba(255, 255, 255, 0.31);
+	transition: 0.2s linear all;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+.user-actions > button > span {
+	font-size: 12px;
+	margin-right: 3px;
+}
+
+.user-actions > button:hover {
+	width: 110px;    
+	color: #4e4e4e;
+}
+
+.user-actions > button:active {
+	color: #000000;
 }

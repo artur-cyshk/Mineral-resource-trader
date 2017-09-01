@@ -1,6 +1,6 @@
-import React, { Component, ReactDOM } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllUsersDispatcher, clearUsersListDispatcher } from '../../dispatchers';
+import { getAllUsersDispatcher, clearUsersListDispatcher, updateUserByIdDispatcher } from '../../dispatchers';
 import { UsersList } from '../../components';
 import { usersListItemsLimit } from '../../constants/common';
 import './admin.css';
@@ -37,7 +37,7 @@ class Admin extends Component {
 		    		<a>Registered users</a> {this.isShowMoreButton}
 		    	</nav>
 		    	<div onScroll={this.handleScroll} id="id" ref={node => this.scrolledBlock = node}>
-		    		<UsersList users={this.props.users} />
+		    		<UsersList users={this.props.users} updateUser={this.props.updateUser} />
 		    	</div>
 			</div>
 		);
@@ -49,7 +49,8 @@ const mapStateToProps = (state) => ({ users: state.users });
 const mapDispatchToProps = (dispatch) => {
   return {
   	clearUserList: () => dispatch(clearUsersListDispatcher()),
-    getAllUsers: (page) => dispatch(getAllUsersDispatcher(page))
+    getAllUsers: (page) => dispatch(getAllUsersDispatcher(page)),
+    updateUser: (user) => dispatch(updateUserByIdDispatcher(user))
   }
 };
 

@@ -3,5 +3,6 @@ export const ENDPOINTS = {
 	signIn: '/login',
 	signUp: '/registration',
 	getCurrentUser: '/user',
-	getAllUsers: '/users'
+	getAllUsers: '/users',
+	updateUser: '/user'
 };

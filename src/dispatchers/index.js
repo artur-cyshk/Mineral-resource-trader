@@ -7,7 +7,19 @@ import signOutDispatcher from './signOut';
 import loadingDispatcher from './loading';
 import notificationsDispatcher from './notifications';
 import getAllUsersDispatcher from './users';
-import { clearUsersListDispatcher } from './users';
+import { clearUsersListDispatcher, updateUserByIdDispatcher } from './users';
 
 
-export { fetchDispatcher, authDispatcher, getCurrentUserDispatcher, signInDispatcher, signUpDispatcher, loadingDispatcher, notificationsDispatcher, signOutDispatcher, getAllUsersDispatcher, clearUsersListDispatcher };
+export { 
+	fetchDispatcher,
+	authDispatcher,
+	getCurrentUserDispatcher,
+	signInDispatcher,
+	signUpDispatcher,
+	loadingDispatcher,
+	notificationsDispatcher,
+	signOutDispatcher,
+	getAllUsersDispatcher,
+	clearUsersListDispatcher,
+	updateUserByIdDispatcher
+};
