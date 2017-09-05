@@ -7,13 +7,12 @@ import { Router } from 'react-router';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import history from '../../configs/history';
 
-
 class Root extends Component {
 
   componentWillMount() {
     this.props.getCurrentUser();  
   }
-  
+
   render() {
     let { isAdmin, id } = this.props.currentUser;
     let authorizedRedirect = isAdmin ? <Redirect to='/admin'/> : id ? <Redirect to='/workspace'/> : null;

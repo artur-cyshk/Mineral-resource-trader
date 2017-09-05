@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Resources, Portfolio } from '../../components';
 
-
-export default class Operations extends Component {
+class Operations extends Component {
   render() {
     return (
-      	<span>Operations</span>
+    	<div>
+      	<Resources/>
+      	<Portfolio/>
+      </div>	
     );
   }
 };
+
+const mapStateToProps = (state) => ({ resources: state.resources });
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // removeNotification: (data) => dispatch(notificationsDispatcher(data, false)),
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Operations);

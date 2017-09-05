@@ -29,8 +29,8 @@ var server = app.listen(config.port, function() {
     console.log(`server listening on port ${config.port}`);
 });
 
-var io = require('socket.io').listen(server);
-socketRouter(io);
+var io = require('socket.io')(server);
 
 app.use('/api',router);
 app.use(errorHandler);
+socketRouter(io);
