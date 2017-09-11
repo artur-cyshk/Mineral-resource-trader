@@ -1,14 +1,14 @@
 import { callApi } from '../services/http';
 import { UNAUTHORIZED_STATUS } from '../constants/statuses';
-import { loadingDispatcher, notificationsDispatcher } from './';
+import { loadingCreator, notificationsCreator } from './';
 
 
-export default (apiCallData, successDispatcher, errorDispatcher, { successNotificationNeeded = false, errorNotificationNeeded = false }) => {
+export default (apiCallData, successCreator, errorCreator, { successNotificationNeeded = false, errorNotificationNeeded = false }) => {
 	return (dispatch) => {
-		loadingDispatcher(true, dispatch);
+		loadingCreator(true, dispatch);
 		callApi(apiCallData.route, apiCallData.config)
 		    .then(response => {
-		        loadingDispatcher(false, dispatch);
+		        loadingCreator(false, dispatch);
 		        let isUnauthorized = response.status === UNAUTHORIZED_STATUS;
 			    return response[isUnauthorized ? 'text' : 'json']().then( responseData => {
 			    	return {
@@ -21,27 +21,27 @@ export default (apiCallData, successDispatcher, errorDispatcher, { successNotifi
 			}) 
 		    .then(({ok, status, isUnauthorized, json}) => {
 		    	if (ok) {
-		    		successDispatcher(json, dispatch);
+		    		successCreator(json, dispatch);
 		    		if (successNotificationNeeded) {
-		    			notificationsDispatcher({ message: json.message, ok: true }, true)(dispatch);
+		    			notificationsCreator({ message: json.message, ok: true }, true)(dispatch);
 		    		} 
 		    	} else {
 		    		if (errorNotificationNeeded && status !== UNAUTHORIZED_STATUS) {
-		    			notificationsDispatcher({ message: json.message, ok: false }, true)(dispatch);
+		    			notificationsCreator({ message: json.message, ok: false }, true)(dispatch);
 			    	} 
-			    	if (errorDispatcher) {
-			    		errorDispatcher({status, isUnauthorized, ...json}, dispatch);
+			    	if (errorCreator) {
+			    		errorCreator({status, isUnauthorized, ...json}, dispatch);
 			    	}
 		    	}
 		    })
 	  		.catch(response => {
-	  			if (errorDispatcher) {
-	  				errorDispatcher('There was an error while parsing response', dispatch);
+	  			if (errorCreator) {
+	  				errorCreator('There was an error while parsing response', dispatch);
 	  			}
 	  		    if (errorNotificationNeeded) {
-	  		    	notificationsDispatcher({ message: 'There was an error while parsing response' }, true)(dispatch);
+	  		    	notificationsCreator({ message: 'There was an error while parsing response' }, true)(dispatch);
 	  		    }
-	  		    loadingDispatcher(false, dispatch);
+	  		    loadingCreator(false, dispatch);
 	  		});
 	}
 }

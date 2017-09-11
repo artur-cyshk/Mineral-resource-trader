@@ -1,7 +1,7 @@
-import {fetchDispatcher} from './';
+import {fetchCreator} from './';
 
-export default (route, successDispatcher, userData) => {
-	return fetchDispatcher(
+export default (route, successHandler, userData) => {
+	return fetchCreator(
 		{
 			route: route,
 			config: {
@@ -9,7 +9,7 @@ export default (route, successDispatcher, userData) => {
 				body: userData
 			}
 		},
-		successDispatcher,
+		successHandler,
 		null,
 		{
 			successNotificationNeeded: true,

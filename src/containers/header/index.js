@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { signOutDispatcher } from '../../dispatchers';
+import { signOutCreator } from '../../actionCreators';
 import './header.css';
 
 
@@ -32,6 +32,6 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({ isLoading: state.loading.isLoading, currentUser: state.auth.currentUser });
 
-const mapDispatchToProps = (dispatch) => ({ signOut: () => dispatch(signOutDispatcher()) });
+const mapDispatchToProps = (dispatch) => ({ signOut: () => dispatch(signOutCreator()) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

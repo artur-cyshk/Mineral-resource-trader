@@ -1,18 +1,18 @@
 import { getAllUsers, clearUsersList, updateUserById } from '../actions/users';
-import { fetchDispatcher } from './';
+import { fetchCreator } from './';
 import { usersListItemsLimit } from '../constants/common';
 
 
-const successDispatcher = (response, dispatch) => {
+const successHandler = (response, dispatch) => {
 	dispatch(getAllUsers(response));
 };
 
-const errorDispatcher = (response, dispatch) => {
+const errorHandler = (response, dispatch) => {
 	dispatch(getAllUsers());
 };
 
-export const updateUserByIdDispatcher = (data) => {
-	return fetchDispatcher(
+export const updateUserByIdCreator = (data) => {
+	return fetchCreator(
 		{
 			route: 'updateUser',
 			config: {
@@ -28,10 +28,10 @@ export const updateUserByIdDispatcher = (data) => {
 	);
 };
 
-export const clearUsersListDispatcher = () => (dispatch) => dispatch(clearUsersList());
+export const clearUsersListCreator = () => (dispatch) => dispatch(clearUsersList());
 
 export default (page = 0) => {
-	return fetchDispatcher(
+	return fetchCreator(
 		{
 			route: 'getAllUsers',
 			config: {
@@ -42,8 +42,8 @@ export default (page = 0) => {
 				}
 			}
 		},
-		successDispatcher,
-		errorDispatcher,
+		successHandler,
+		errorHandler,
 		{
 			errorNotificationNeeded: true
 		}

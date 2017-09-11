@@ -1,14 +1,14 @@
 import { setCurrentUser, unsetCurrentUser } from '../actions/auth';
-import { fetchDispatcher } from './';
+import { fetchCreator } from './';
 import * as localStorageService from '../services/localStorage';
 import { UNAUTHORIZED_STATUS, NO_PERMISSION_STATUS } from '../constants/statuses';
 
 
-const successDispatcher = (response, dispatch) => {
+const successHandler = (response, dispatch) => {
 	dispatch(setCurrentUser(response));
 }
 
-const errorDispatcher = (response, dispatch) => {
+const errorHandler = (response, dispatch) => {
 	if([UNAUTHORIZED_STATUS, NO_PERMISSION_STATUS].includes(response.status)) {
 		localStorageService.removeItem('access_token');
 	}
@@ -17,15 +17,15 @@ const errorDispatcher = (response, dispatch) => {
 
 
 export default () => {
-	return fetchDispatcher(
+	return fetchCreator(
 		{
 			route: 'getCurrentUser',
 			config: {
 				method: 'GET'
 			}
 		},
-		successDispatcher,
-		errorDispatcher,
+		successHandler,
+		errorHandler,
 		{
 			errorNotificationNeeded: true
 		}

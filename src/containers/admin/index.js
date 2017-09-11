@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllUsersDispatcher, clearUsersListDispatcher, updateUserByIdDispatcher } from '../../dispatchers';
+import { getAllUsersCreator, clearUsersListCreator, updateUserByIdCreator } from '../../actionCreators';
 import { UsersList } from '../../components';
 import { usersListItemsLimit } from '../../constants/common';
 import './admin.css';
@@ -48,9 +48,9 @@ class Admin extends Component {
 const mapStateToProps = (state) => ({ users: state.users });
 const mapDispatchToProps = (dispatch) => {
   return {
-  	clearUserList: () => dispatch(clearUsersListDispatcher()),
-    getAllUsers: (page) => dispatch(getAllUsersDispatcher(page)),
-    updateUser: (user) => dispatch(updateUserByIdDispatcher(user))
+  	clearUserList: () => dispatch(clearUsersListCreator()),
+    getAllUsers: (page) => dispatch(getAllUsersCreator(page)),
+    updateUser: (user) => dispatch(updateUserByIdCreator(user))
   }
 };
 

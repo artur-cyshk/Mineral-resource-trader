@@ -16,7 +16,7 @@ class Operations extends Component {
 const mapStateToProps = (state) => ({ resources: state.resources });
 const mapDispatchToProps = (dispatch) => {
   return {
-    // removeNotification: (data) => dispatch(notificationsDispatcher(data, false)),
+    // removeNotification: (data) => dispatch(notificationsCreator(data, false)),
   }
 };
 

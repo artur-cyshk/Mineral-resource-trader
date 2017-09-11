@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signInDispatcher, signUpDispatcher } from '../../dispatchers';
+import { signInCreator, signUpCreator } from '../../actionCreators';
 import { SignIn, SignUp } from '../../components';
 import {
   Route,
@@ -28,8 +28,8 @@ class Auth extends Component {
 const mapStateToProps = (state) => ({ data: state.auth });
 const mapDispatchToProps = (dispatch) => {
   return {
-    signUp: (user) => dispatch(signUpDispatcher(user)),
-    signIn: (user) => dispatch(signInDispatcher(user)),
+    signUp: (user) => dispatch(signUpCreator(user)),
+    signIn: (user) => dispatch(signInCreator(user)),
   }
 };
 

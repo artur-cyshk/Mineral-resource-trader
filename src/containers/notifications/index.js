@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
-import { notificationsDispatcher } from '../../dispatchers';
+import { notificationsCreator } from '../../actionCreators';
 import { Notification } from '../../components';
 import './notifications.css';
 
@@ -25,7 +25,7 @@ class Notifications extends Component {
 const mapStateToProps = (state) => ({ notifications: state.notifications });
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeNotification: (data) => dispatch(notificationsDispatcher(data, false)),
+    removeNotification: (data) => dispatch(notificationsCreator(data, false)),
   }
 };
 

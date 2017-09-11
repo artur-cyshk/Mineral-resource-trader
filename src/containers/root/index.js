@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Workspace, Auth, Admin, Notifications, Header } from '../../containers';
-import { getCurrentUserDispatcher } from '../../dispatchers';
+import { getCurrentUserCreator } from '../../actionCreators';
 import './root.css';
 import { Router } from 'react-router';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => ({ currentUser: state.auth.currentUser });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCurrentUser: () => dispatch(getCurrentUserDispatcher())
+    getCurrentUser: () => dispatch(getCurrentUserCreator())
   }
 };
 
