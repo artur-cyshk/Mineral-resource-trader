@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { autoRemovingNotificationDelay } from '../../constants/common.js';
-import './notification.css';
+import { autoRemovingNotificationDelay } from '../constants/common.js';
+import '../styles/notification.css';
 
 export default class Notification extends Component {
 

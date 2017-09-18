@@ -4,6 +4,7 @@ const jwt = require("jwt-simple");
 const cfg = require("../../../../configuration/jwt/jwtConfig.js");  
 
 module.exports = function (req, res, next) {
+	console.log(req.body);
     if (req.body.username && req.body.password) {
          var query = 'select id, name, balance, is_admin as isAdmin, is_banned as isBanned from user where name = "' + req.body.username +
             '" and password_hash = "' + encrypt(req.body.password) + '" and is_email_submitted = 1 limit 1';

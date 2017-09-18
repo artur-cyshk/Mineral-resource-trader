@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { signOutCreator } from '../../actionCreators';
-import './header.css';
+import { signOutCreator } from '../actionCreators';
+import '../styles/header.css';
 
 
 class Header extends Component {

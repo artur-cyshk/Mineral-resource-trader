@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signInCreator, signUpCreator } from '../../actionCreators';
-import { SignIn, SignUp } from '../../components';
+import { signInCreator, signUpCreator } from '../actionCreators';
+import { SignIn, SignUp } from '../components';
 import {
   Route,
   Redirect,
   Switch
 } from 'react-router-dom';
-import './auth.css';
+import '../styles/auth.css';
 
 
 class Auth extends Component {

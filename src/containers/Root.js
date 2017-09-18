@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Workspace, Auth, Admin, Notifications, Header } from '../../containers';
-import { getCurrentUserCreator } from '../../actionCreators';
-import './root.css';
+import { Workspace, Auth, Admin, Notifications, Header } from '../containers';
+import { getCurrentUserCreator } from '../actionCreators';
 import { Router } from 'react-router';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import history from '../../configs/history';
+import history from '../configs/history';
+import '../styles/root.css';
 
 class Root extends Component {
 

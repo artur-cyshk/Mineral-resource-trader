@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Validation from 'react-validation';
-import '../../configs/validationRules';
+import '../configs/validationRules';
 
 
 export default class SignUp extends Component {

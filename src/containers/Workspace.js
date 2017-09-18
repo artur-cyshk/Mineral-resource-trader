@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Operations, Archive, RecentActivities } from '../../containers';
+import { Operations, Archive, RecentActivities } from '../containers';
 import {
   Route,
   NavLink,
   Redirect,
   Switch
 } from 'react-router-dom';
-import './workspace.css';
+import '../styles/workspace.css';
 
 
 export default class Workspace extends Component {

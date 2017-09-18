@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllUsersCreator, clearUsersListCreator, updateUserByIdCreator } from '../../actionCreators';
-import { UsersList } from '../../components';
-import { usersListItemsLimit } from '../../constants/common';
-import './admin.css';
+import { getAllUsersCreator, clearUsersListCreator, updateUserByIdCreator } from '../actionCreators';
+import { UsersList } from '../components';
+import { usersListItemsLimit } from '../constants/common';
+import '../styles/admin.css';
 
 
 class Admin extends Component {
 
-	componentWillMount() {
+	componentDidMount() {
 		this.props.getAllUsers();
 	}
 

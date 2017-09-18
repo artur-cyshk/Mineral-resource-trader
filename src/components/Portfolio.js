@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import '../styles/portfolio.css';
 
 export default class RecentActivities extends Component {
   render() {

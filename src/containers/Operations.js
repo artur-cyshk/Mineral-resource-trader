@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Resources, Portfolio } from '../../components';
+import { Resources, Portfolio } from '../components';
+import '../styles/operations.css';
 
 class Operations extends Component {
   render() {

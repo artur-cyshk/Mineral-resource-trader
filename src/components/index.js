@@ -1,11 +1,11 @@
-import PieChart from './pieChart';
-import Portfolio from './portfolio';
-import SignIn from './signIn';
-import SignUp from './signUp';
-import Notification from './notification';
-import UsersList from './usersList';
-import User from './user';
-import Resources from './resources';
+import PieChart from './PieChart';
+import Portfolio from './Portfolio';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import Notification from './Notification';
+import UsersList from './UsersList';
+import User from './User';
+import Resources from './Resources';
 
 
 export {

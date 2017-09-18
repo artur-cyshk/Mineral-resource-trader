@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { User } from '../';
-import './usersList.css';
+import { User } from './';
+import '../styles/usersList.css';
 
 
 export default class UsersList extends Component {

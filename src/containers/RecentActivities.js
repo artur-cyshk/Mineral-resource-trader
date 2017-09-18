@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './recentActivities.css';
+import '../styles/recentActivities.css';
 
 
 export default class RecentActivities extends Component {

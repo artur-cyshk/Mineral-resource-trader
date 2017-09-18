@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
-import { notificationsCreator } from '../../actionCreators';
-import { Notification } from '../../components';
-import './notifications.css';
+import { notificationsCreator } from '../actionCreators';
+import { Notification } from '../components';
+import '../styles/notifications.css';
 
 class Notifications extends Component {
 	
